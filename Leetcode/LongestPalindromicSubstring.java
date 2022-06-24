@@ -1,5 +1,3 @@
-import java.util.Arrays;
-
 public class LongestPalindromicSubstring {
 
     public static String longestPalindrome(String s) {
@@ -38,14 +36,8 @@ public class LongestPalindromicSubstring {
 
     public static void main(String[] args) {
 
-        String s = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
-        long start = System.currentTimeMillis();
+        String s = "aababad";
         String output = longestPalindrome(s);
-        long end = System.currentTimeMillis();
         System.out.println("String is " + output);
-        System.out.println("start " + start);
-        System.out.println("End " + end);
-        System.out.println("Time required " + (end - start));
-
     }
 }
