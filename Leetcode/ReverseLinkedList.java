@@ -30,7 +30,22 @@ public class ReverseLinkedList {
         }
         return newHead;
     }
-
+    static class ListNode {
+        int val;
+        ListNode next;
+    
+        ListNode() {
+        }
+    
+        ListNode(int val) {
+            this.val = val;
+        }
+    
+        ListNode(int val, ListNode next) {
+            this.val = val;
+            this.next = next;
+        }
+    }
     public static void main(String[] args) {
         ListNode firstF = new  ListNode(1);
         ListNode secondF = new  ListNode(2);
@@ -43,21 +58,5 @@ public class ReverseLinkedList {
             System.out.print(result.val+" ");
             result = result.next;
         }
-    }
-}
-class ListNode {
-    int val;
-    ListNode next;
-
-    ListNode() {
-    }
-
-    ListNode(int val) {
-        this.val = val;
-    }
-
-    ListNode(int val, ListNode next) {
-        this.val = val;
-        this.next = next;
     }
 }

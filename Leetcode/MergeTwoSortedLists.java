@@ -8,6 +8,22 @@ Return the head of the merged linked list.
  */
 
 public class MergeTwoSortedLists {
+    static class ListNode {
+        int val;
+        ListNode next;
+    
+        ListNode() {
+        }
+    
+        ListNode(int val) {
+            this.val = val;
+        }
+    
+        ListNode(int val, ListNode next) {
+            this.val = val;
+            this.next = next;
+        }
+    }
 
     public static ListNode mergeTwoLists(ListNode list1, ListNode list2) {
         if(list1 == null){
@@ -48,19 +64,3 @@ public class MergeTwoSortedLists {
     }
 }
 
-class ListNode {
-    int val;
-    ListNode next;
-
-    ListNode() {
-    }
-
-    ListNode(int val) {
-        this.val = val;
-    }
-
-    ListNode(int val, ListNode next) {
-        this.val = val;
-        this.next = next;
-    }
-}

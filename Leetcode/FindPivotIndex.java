@@ -4,6 +4,7 @@ public class FindPivotIndex {
      
         int leftSum = 0;
         int total = getSum(nums);
+        
         for (int i = 0; i < nums.length; i++) {
             leftSum +=(i==0?0:nums[i-1]);
             if (leftSum == total-leftSum-nums[i])
@@ -25,5 +26,4 @@ public class FindPivotIndex {
         int result  = pivotIndex(nums);
         System.out.println("Result is "+result);
     }
-
 }
