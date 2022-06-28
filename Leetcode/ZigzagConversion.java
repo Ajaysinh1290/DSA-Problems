@@ -1,7 +1,5 @@
 // https://leetcode.com/problems/zigzag-conversion/
 
-import java.util.ArrayList;
-
 public class ZigzagConversion {
 
     // Solution 1
