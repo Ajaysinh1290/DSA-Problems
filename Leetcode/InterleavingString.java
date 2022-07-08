@@ -1,47 +1,45 @@
+import java.util.HashMap;
+
 // https://leetcode.com/problems/interleaving-string/
 public class InterleavingString {
-    public static String str1;
-    public static String str2;
-    public static String str3;
 
     public static boolean isInterleave(String s1, String s2, String s3) {
 
-        if (s1.isEmpty()) {
-            return s2.equals(s3);
-        } else if (s2.isEmpty()) {
-            return s1.equals(s3);
-        }
-
-        str1 = s1;
-        str2 = s2;
-        str3 = s3;
-        return isInterleave(0, 0, 0);
-    }
-
-    public static boolean isInterleave(int s1, int s2, int s3) {
-
-        if (s2 >= str2.length()) {
-            return true;
-        }
-        if (s1 >= str1.length() || s2 >= str2.length()) {
+        if (s1.length() + s2.length() != s3.length()) {
             return false;
         }
-        System.out.println(
-                "Comparing s1 : " + str1.substring(s1) + " s2 : " + str2.substring(s2) + " s3 : "
-                        + str3.substring(s3));
-        if ((compare(str1, s1, s3) || compare(str2, s2, s3))
-                && (isInterleave(s1 + 1, s2, s3 + 1) || isInterleave(s1, s2 + 1, s3 + 1))) {
-            return Math.abs(s2-s1)<=2;
-        }
-        return false;
+        int[][] map = new int[s1.length()][s2.length()];
+
+        return isInterleave(s1, 0, s2, 0, s3, 0,map);
     }
 
-    public static boolean compare(String s, int sIndex, int index) {
-        return s.charAt(sIndex) == str3.charAt(index);
+    public static boolean isInterleave(String str1, int s1, String str2, int s2, String str3, int s3,int[][] map) {
+
+        if (s1 == str1.length()) {
+            return str2.substring(s2).equals(str3.substring(s3));
+        }
+
+        if (s2 == str2.length()) {
+            return str1.substring(s1).equals(str3.substring(s3));
+        }
+
+        if(map[s1][s2]>=1) {
+            return map[s1][s2]==2;
+        }
+  
+        boolean result = false;
+        if (str1.charAt(s1) == str3.charAt(s3) && isInterleave(str1, s1 + 1, str2, s2, str3, s3 + 1,map)
+                || str2.charAt(s2) == str3.charAt(s3)
+                        && isInterleave(str1, s1, str2, s2 + 1, str3, s3 + 1,map)) {
+            result = true;
+        }
+        map[s1][s2] = result?2:1;
+        return result;
     }
+
 
     public static void main(String[] args) {
-        boolean result = isInterleave("aabcc", "dbbca", "aadbbbaccc");
+        boolean result = isInterleave("a", "b", "ab");
         System.out.println("Result is " + result);
     }
 }
