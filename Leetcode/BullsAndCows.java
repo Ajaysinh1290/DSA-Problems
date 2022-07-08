@@ -1,8 +1,5 @@
 
 // https://leetcode.com/problems/bulls-and-cows/
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
 import java.util.concurrent.TimeUnit;
 
 public class BullsAndCows {

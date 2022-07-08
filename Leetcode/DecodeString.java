@@ -1,4 +1,3 @@
-import java.util.Arrays;
 import java.util.Stack;
 
 // https://leetcode.com/problems/decode-string/
