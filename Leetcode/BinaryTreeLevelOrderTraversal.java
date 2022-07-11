@@ -1,4 +1,5 @@
 // https://leetcode.com/problems/binary-tree-level-order-traversal/
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedList;
@@ -62,7 +63,6 @@ public class BinaryTreeLevelOrderTraversal {
     // createList(node.right,index+1);
 
     // }
-
 
     // Solution 2
     public static List<List<Integer>> levelOrder(TreeNode root) {
