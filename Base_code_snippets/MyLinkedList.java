@@ -36,24 +36,19 @@ public class MyLinkedList {
     }
 
     public static ListNode createLinkedListFromArray(int[] nums) {
-        ListNode node = new ListNode();
+        ListNode node = new ListNode(0);
         ListNode root = node;
-        for (int i = 0; i < nums.length; i++) {
-            node.val = nums[i];
-            if (root == null) {
-                root = node;
-            }
-            if (i + 1 < nums.length) {
-                node.next = new ListNode();
-                node = node.next;
-            }
+        for (int num : nums) {
+            node.next = new ListNode(num);
+            node = node.next;
         }
-        return root;
+        return root.next;
     }
 
     public static void main(String[] args) {
         int[] nums = { 2, 1, 3, 5, 6, 4, 7 };
 
         ListNode root = createLinkedListFromArray(nums);
+        printList(root);
     }
 }
