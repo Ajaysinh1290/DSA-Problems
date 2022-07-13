@@ -1,18 +1,7 @@
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
+import java.util.*;
 
-public class MyBinaryTree {
-    // public static class Index {
-    //     int value;
-
-    //     Index(int value) {
-    //         this.value = value;
-    //     }
-    // }
-
+public class InvertBinaryTree {
+    
     public static class TreeNode {
         int val;
         TreeNode left;
@@ -62,20 +51,30 @@ public class MyBinaryTree {
         }
         return list;
     }
-
+    public static TreeNode invertTree(TreeNode root) {
+        if(root==null) {
+            return null;
+        }
+        TreeNode temp = root.right;
+        root.right =  invertTree(root.left);
+        root.left  = invertTree(temp);
+        return root;
+    }
     public static void main(String[] args) {
-        // TreeNode root = new TreeNode(3);
-        // TreeNode fNode = new TreeNode(9);
-        // TreeNode sNode = new TreeNode(20);
-        // TreeNode TNode = new TreeNode(15);
-        // TreeNode FNode = new TreeNode(7);
-        // root.left = fNode;
-        // root.right = sNode;
-        // sNode.left = TNode;
-        // sNode.right = FNode;
+        TreeNode root = new TreeNode(3);
+        TreeNode fNode = new TreeNode(9);
+        TreeNode sNode = new TreeNode(20);
+        TreeNode TNode = new TreeNode(15);
+        TreeNode FNode = new TreeNode(7);
+        root.left = fNode;
+        root.right = sNode;
+        sNode.left = TNode;
+        sNode.right = FNode;
+        TreeNode result = invertTree(root);
 
 
-        // List list = levelOrder(root);
-        // System.out.println(Arrays.toString(list.toArray()));
+
+        List<List<Integer>> list = levelOrder(result);
+        System.out.println(Arrays.deepToString(list.toArray()));
     }
 }

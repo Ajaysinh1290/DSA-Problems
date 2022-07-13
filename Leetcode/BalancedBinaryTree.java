@@ -1,18 +1,6 @@
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
+import java.util.*;
 
-public class MyBinaryTree {
-    // public static class Index {
-    //     int value;
-
-    //     Index(int value) {
-    //         this.value = value;
-    //     }
-    // }
-
+public class BalancedBinaryTree {
     public static class TreeNode {
         int val;
         TreeNode left;
@@ -63,19 +51,44 @@ public class MyBinaryTree {
         return list;
     }
 
+    public static boolean isBalanced(TreeNode root) {
+
+        return checkBalanced(root, 0) != -1;
+
+    }
+
+    public static int checkBalanced(TreeNode root, int index) {
+        if (root == null) {
+            return index;
+        }
+        int left = checkBalanced(root.left, index + 1);
+        if (left == -1) {
+            return -1;
+        }
+        int right = checkBalanced(root.right, index + 1);
+
+        if (right == -1) {
+            return -1;
+        }
+        return Math.abs(left - right) <= 1 ? Math.max(left, right) : -1;
+    }
+
     public static void main(String[] args) {
-        // TreeNode root = new TreeNode(3);
-        // TreeNode fNode = new TreeNode(9);
-        // TreeNode sNode = new TreeNode(20);
-        // TreeNode TNode = new TreeNode(15);
-        // TreeNode FNode = new TreeNode(7);
-        // root.left = fNode;
-        // root.right = sNode;
-        // sNode.left = TNode;
-        // sNode.right = FNode;
+        TreeNode root = new TreeNode(1);
+        TreeNode fNode = new TreeNode(2);
+        TreeNode sNode = new TreeNode(2);
+        TreeNode TNode = new TreeNode(3);
+        TreeNode FNode = new TreeNode(3);
+        TreeNode SNode = new TreeNode(4);
+        TreeNode SeNode = new TreeNode(4);
+        root.left = fNode;
+        root.right = sNode;
+        fNode.left = TNode;
+        sNode.right = FNode;
+        TNode.left = SNode;
+        FNode.right = SeNode;
 
-
-        // List list = levelOrder(root);
-        // System.out.println(Arrays.toString(list.toArray()));
+        boolean result = isBalanced(root);
+        System.out.println("Result is " + result);
     }
 }
